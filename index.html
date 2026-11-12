@@ -7,7 +7,7 @@
 <title>V.I.T.A.L. Frameworks</title>
 
 <meta name="description"
-content="Academic frameworks for life and learning: Interdependent, Independent, Hardship, and Gabe's Note-Taking Method.">
+content="Academic frameworks for life and learning: Interdependence, Independence, Hardship, and Gabe's Note-Taking Method.">
 
 <style>
 
@@ -384,7 +384,7 @@ ul{
 
 </div>
 
-<!-- ==== Top === -->
+<!-- ==== Top Navigation === -->
 <div id="site-nav" class="site-nav" aria-label="Primary"></div>
 <script src="nav.js"></script>
 
@@ -419,12 +419,6 @@ Life behaves like a polynomial. Many variables, each with its own degree of infl
 </ul>
 
 </section>
-
-<h2 class="section-heading" id="frameworks-heading">Frameworks</h2>
-
-<p class="section-intro">
-Each framework follows the same structure: <em>Topic → Definition → Rule → Example</em>.
-</p>
 
 <section class="grid" aria-labelledby="frameworks-heading">
 
@@ -462,7 +456,7 @@ Life as a polynomial — many variables, various outcomes, one result. The <stro
 
 </section>
 
-<h2 class="section-heading" id="reading-heading">Source Definitions</h2>
+<h2 class="section-heading" id="source-heading">Source Definitions</h2>
 
 <ul>
 <li><strong>Interdependent</strong> — dependent upon one another; mutually dependent (<a href="https://www.merriam-webster.com/dictionary/interdependent" target="_blank" rel="noopener">Merriam-Webster</a>)</li>
@@ -505,4 +499,153 @@ Life as a polynomial — many variables, various outcomes, one result. The <stro
         try {
             var raw = window.localStorage.getItem(STORE_KEY_SIZE);
             if (raw === null) { return DEFAULT_INDEX; }
-           
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+
+        display.textContent = Math.round(scale * 100) + '%';
+
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+
+        if (window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    // Follow OS changes only when the user hasn't chosen manually
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); }
+            catch (err) { stored = null; }
+
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
+
+})();
+</script>
+
+<footer>
+
+<h3>V.I.T.A.L. Frameworks</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> V.I.T.A.L. Frameworks. All rights reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
