@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interdependent | Chapter 5 Mastery Center</title>
+<meta name="description" content="Definition, LOVE framework, and worked example for Interdependent.">
+
+<style>
+:root{--primary:#2563eb;--secondary:#1d4ed8;--success:#059669;--light:#f8fafc;--border:#e5e7eb;--bg-body:#f9fafb;--bg-card:#ffffff;--text-main:#111827;--text-muted:#4b5563;--footer-text:#6b7280;--shadow:rgba(0,0,0,.08);--font-scale:1;}
+[data-theme="dark"]{--primary:#58a6ff;--secondary:#79b8ff;--success:#3fb950;--light:#161b22;--border:#30363d;--bg-body:#0d1117;--bg-card:#161b22;--text-main:#f0f6fc;--text-muted:#8b949e;--footer-text:#8b949e;--shadow:rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg-body);color:var(--text-main);transition:background .3s,color .3s;}
+.skip-link{position:absolute;top:-60px;left:0;background:var(--primary);color:#fff;padding:10px 16px;z-index:1000;text-decoration:none;border-radius:0 0 8px 0;transition:top .2s;}
+.skip-link:focus{top:0;}
+.a11y-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;position:sticky;top:0;z-index:900;}
+.a11y-group{display:flex;align-items:center;gap:6px;}
+.a11y-label{font-size:.85rem;font-weight:600;color:var(--text-muted);margin-right:4px;}
+.a11y-btn{min-width:40px;min-height:40px;padding:8px 12px;font-size:1rem;font-weight:600;border:2px solid var(--border);border-radius:6px;background:var(--bg-body);color:var(--text-main);cursor:pointer;transition:background .2s,border-color .2s;}
+.a11y-btn:hover{border-color:var(--primary);}
+.a11y-btn:focus-visible{outline:3px solid var(--primary);outline-offset:2px;}
+.a11y-btn[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary);}
+.a11y-btn:disabled{opacity:.45;cursor:not-allowed;}
+#font-level-display{font-size:.85rem;color:var(--text-muted);min-width:44px;text-align:center;}
+.hero{max-width:1200px;margin:24px auto 0;padding:40px 25px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);text-align:center;}
+.hero h1{margin:0;font-size:calc(2.4rem * var(--font-scale));color:var(--primary);}
+.hero p{font-size:calc(1.1rem * var(--font-scale));color:var(--text-muted);margin-top:15px;}
+.site-nav{max-width:1200px;margin:16px auto 0;padding:12px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);}
+.site-nav ul{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.site-nav a{display:inline-block;padding:10px 14px;text-decoration:none;color:var(--primary);font-weight:600;border-radius:6px;font-size:calc(1rem * var(--font-scale));}
+.site-nav a:hover,.site-nav a:focus-visible{background:var(--primary);color:#fff;outline:none;}
+.site-nav a[aria-current="page"]{background:var(--primary);color:#fff;}
+.container{max-width:1200px;margin:auto;padding:40px 20px;}
+.concept-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:25px;margin-bottom:30px;box-shadow:0 2px 8px var(--shadow);}
+.concept-card h2{color:var(--primary);margin-top:0;font-size:calc(1.5rem * var(--font-scale));border-bottom:2px solid var(--border);padding-bottom:10px;}
+.concept-card p{font-size:calc(1rem * var(--font-scale));line-height:1.7;}
+.acronym-list{list-style:none;padding:0;margin:15px 0;}
+.acronym-list li{padding:12px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;}
+.acronym-list li:last-child{border-bottom:none;}
+.acronym-letter{font-weight:800;color:var(--primary);font-size:calc(1.4rem * var(--font-scale));margin-right:12px;min-width:30px;text-align:center;}
+.acronym-def{flex:1;font-size:calc(1rem * var(--font-scale));}
+.source-link{display:inline-block;margin-top:10px;color:var(--primary);text-decoration:none;font-weight:600;}
+.source-link:hover{text-decoration:underline;}
+.page-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:20px;}
+.back{display:inline-block;padding:10px 16px;background:var(--primary);color:#fff;text-decoration:none;border-radius:6px;font-weight:600;font-size:calc(1rem * var(--font-scale));}
+.back:hover,.back:focus-visible{background:var(--secondary);}
+.back:focus-visible{outline:3px solid var(--primary);outline-offset:3px;}
+footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px solid var(--border);}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+@media print{.a11y-bar,.site-nav{display:none;}body{background:#fff;color:#000;}.concept-card{box-shadow:none;border:1px solid #ccc;}}
+</style>
+</head>
+
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+</div>
+
+<div id="site-nav" class="site-nav" aria-label="Primary"></div>
+<script src="nav.js"></script>
+
+<header class="hero">
+    <h1>Interdependent</h1>
+    <p>Mutual Dependence &amp; The LOVE Framework</p>
+</header>
+
+<main class="container" id="main-content">
+
+<section class="concept-card">
+    <h2>Topic</h2>
+    <p><strong>Interdependence</strong> — how mutually reliant people, teams, or systems hold together.</p>
+</section>
+
+<section class="concept-card">
+    <h2>Definition</h2>
+    <p>Dependent upon one another; mutually dependent.</p>
+    <a class="source-link" href="https://www.merriam-webster.com/dictionary/interdependent" target="_blank" rel="noopener">Origin: Merriam-Webster →</a>
+</section>
+
+<section class="concept-card">
+    <h2>Rule: The LOVE Framework</h2>
+    <p>Interdependent relationships require these four pillars to sustain mutual dependence.</p>
+    <ul class="acronym-list">
+        <li><span class="acronym-letter">L</span><span class="acronym-def"><strong>Loyalty</strong> — commitment to the shared bond and outcome.</span></li>
+        <li><span class="acronym-letter">O</span><span class="acronym-def"><strong>Observation</strong> — staying attuned to what others actually need.</span></li>
+        <li><span class="acronym-letter">V</span><span class="acronym-def"><strong>Vigilance</strong> — protecting the relationship from outside threats and drift.</span></li>
+        <li><span class="acronym-letter">E</span><span class="acronym-def"><strong>Enlighten</strong> — raising each other up with knowledge and insight.</span></li>
+    </ul>
+</section>
+
+<section class="concept-card">
+    <h2>Example</h2>
+    <p>A team project where one member's failure causes the entire group to fail. Without <strong>Loyalty</strong> to the group, <strong>Observation</strong> of others' needs, <strong>Vigilance</strong> against outside threats, and <strong>Enlightening</strong> each other with knowledge, the interdependent system collapses.</p>
+</section>
+
+<nav class="page-nav" aria-label="Page navigation">
+    <a class="back" href="vital-concepts.html">← All Concepts</a>
+    <a class="back" href="independent.html">Next: Independent →</a>
+</nav>
+
+</main>
+
+<footer>
+    <h3>Chapter 5 Mastery Center</h3>
+    <p>Build confidence one concept at a time.</p>
+    <p class="copyright">&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    'use strict';
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+
+    var LEVELS=[0.75,0.9,1,1.1,1.25,1.5,1.75,2], MIN_INDEX=0, MAX_INDEX=LEVELS.length-1, DEFAULT_INDEX=2;
+    var STORE_KEY_SIZE='ch5-font-scale-index', STORE_KEY_THEME='ch5-theme';
+    var btnIncrease=document.getElementById('font-increase'), btnDecrease=document.getElementById('font-decrease'), btnReset=document.getElementById('font-reset');
+    var display=document.getElementById('font-level-display'), root=document.documentElement;
+
+    function clamp(n,lo,hi){return Math.min(hi,Math.max(lo,n));}
+    function getStoredIndex(){try{var raw=window.localStorage.getItem(STORE_KEY_SIZE);if(raw===null)return DEFAULT_INDEX;var n=parseInt(raw,10);return isNaN(n)?DEFAULT_INDEX:clamp(n,MIN_INDEX,MAX_INDEX);}catch(e){return DEFAULT_INDEX;}}
+    function applyScale(index,announce){index=clamp(index,MIN_INDEX,MAX_INDEX);var scale=LEVELS[index];root.style.setProperty('--font-scale',String(scale));document.body.style.fontSize=(scale*100)+'%';display.textContent=Math.round(scale*100)+'%';btnDecrease.disabled=(index===MIN_INDEX);btnIncrease.disabled=(index===MAX_INDEX);btnDecrease.setAttribute('aria-disabled',String(index===MIN_INDEX));btnIncrease.setAttribute('aria-disabled',String(index===MAX_INDEX));try{window.localStorage.setItem(STORE_KEY_SIZE,String(index));}catch(e){}if(announce){display.textContent=Math.round(scale*100)+'% text size';}}
+
+    var currentIndex=getStoredIndex();applyScale(currentIndex,false);
+    btnIncrease.addEventListener('click',function(){currentIndex=clamp(currentIndex+1,MIN_INDEX,MAX_INDEX);applyScale(currentIndex,true);});
+    btnDecrease.addEventListener('click',function(){currentIndex=clamp(currentIndex-1,MIN_INDEX,MAX_INDEX);applyScale(currentIndex,true);});
+    btnReset.addEventListener('click',function(){currentIndex=DEFAULT_INDEX;applyScale(currentIndex,true);});
+
+    document.addEventListener('keydown',function(evt){if(!(evt.ctrlKey||evt.metaKey))return;if(evt.key==='+'||evt.key==='='){evt.preventDefault();currentIndex=clamp(currentIndex+1,MIN_INDEX,MAX_INDEX);applyScale(currentIndex,true);}else if(evt.key==='-'||evt.key==='_'){evt.preventDefault();currentIndex=clamp(currentIndex-1,MIN_INDEX,MAX_INDEX);applyScale(currentIndex,true);}else if(evt.key==='0'){evt.preventDefault();currentIndex=DEFAULT_INDEX;applyScale(currentIndex,true);}});
+
+    var themeToggle=document.getElementById('theme-toggle');
+    function getPreferredTheme(){try{var stored=window.localStorage.getItem(STORE_KEY_THEME);if(stored==='dark'||stored==='light')return stored;}catch(e){}if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)return 'dark';return 'light';}
+    function applyTheme(theme,persist){if(theme==='dark'){root.setAttribute('data-theme','dark');themeToggle.setAttribute('aria-pressed','true');themeToggle.textContent='☀️ Light Mode';themeToggle.setAttribute('aria-label','Switch to light mode');}else{root.removeAttribute('data-theme');themeToggle.setAttribute('aria-pressed','false');themeToggle.textContent='🌙 Dark Mode';themeToggle.setAttribute('aria-label','Switch to dark mode');}if(persist){try{window.localStorage.setItem(STORE_KEY_THEME,theme);}catch(e){}}}
+
+    var currentTheme=getPreferredTheme();applyTheme(currentTheme,false);
+    themeToggle.addEventListener('click',function(){currentTheme=(currentTheme==='dark')?'light':'dark';applyTheme(currentTheme,true);});
+
+    if(window.matchMedia){var mq=window.matchMedia('(prefers-color-scheme: dark)');var onChange=function(e){var stored=null;try{stored=window.localStorage.getItem(STORE_KEY_THEME);}catch(err){stored=null;}if(stored!=='dark'&&stored!=='light'){currentTheme=e.matches?'dark':'light';applyTheme(currentTheme,false);}};if(mq.addEventListener){mq.addEventListener('change',onChange);}else if(mq.addListener){mq.addListener(onChange);}}
+})();
+</script>
+
+</body>
+</html>
