@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Core Values & Concepts | Chapter 5 Mastery Center</title>
+<title>V.I.T.A.L. Frameworks</title>
 
 <meta name="description"
-content="Explore the definitions and frameworks for Interdependent, Independent, and Hardship using the LOVE, GRIP, and LEAPS models.">
+content="Academic frameworks for life and learning: Interdependent, Independent, Hardship, and Gabe's Note-Taking Method.">
 
 <style>
 
@@ -226,296 +226,140 @@ body{
     padding:40px 20px;
 }
 
-/* Concept Cards */
-.concept-card{
+.progress-box{
     background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:40px;
+    box-shadow:0 2px 8px var(--shadow);
     border:1px solid var(--border);
+}
+
+.progress-box h2{
+    margin-top:0;
+    font-size:calc(1.6rem * var(--font-scale));
+}
+
+.progress-box p,
+.progress-box li{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--bg-card);
     border-radius:12px;
     padding:25px;
-    margin-bottom:30px;
     box-shadow:0 2px 8px var(--shadow);
+    transition:transform .25s, box-shadow .25s;
+    border:1px solid var(--border);
 }
 
-.concept-card h2{
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 16px var(--shadow);
+}
+
+.card h3{
     color:var(--primary);
     margin-top:0;
-    font-size:calc(1.5rem * var(--font-scale));
-    border-bottom:2px solid var(--border);
-    padding-bottom:10px;
+    font-size:calc(1.3rem * var(--font-scale));
 }
 
-.concept-card h3{
-    color:var(--secondary);
-    font-size:calc(1.2rem * var(--font-scale));
-    margin-top:20px;
+.card p{
+    color:var(--text-muted);
+    font-size:calc(1rem * var(--font-scale));
 }
 
-.acronym-list{
-    list-style:none;
-    padding:0;
-    margin:15px 0;
-}
-
-.acronym-list li{
-    padding:12px 0;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:flex-start;
-}
-
-.acronym-list li:last-child{
-    border-bottom:none;
-}
-
-.acronym-letter{
-    font-weight:800;
-    color:var(--primary);
-    font-size:calc(1.4rem * var(--font-scale));
-    margin-right:12px;
-    min-width:30px;
-    text-align:center;
-}
-
-.acronym-def{
-    flex:1;
-}
-
-.source-link{
+.card a{
     display:inline-block;
     margin-top:10px;
-    color:var(--primary);
     text-decoration:none;
-    font-weight:600;
+    color:white;
+    background:var(--primary);
+    padding:10px 16px;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
 }
 
-.source-link:hover{
-    text-decoration:underline;
+.card a:hover,
+.card a:focus-visible{
+    background:var(--secondary);
 }
 
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--footer-text);
-    border-top:1px solid var(--border);
-}
+.card a:focus-visible{
+    outline:3px solidvarious variables with different degrees intersecting to create one outcome.
+</p>
 
-/* Respect users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce){
-    *{
-        transition:none !important;
-        animation:none !important;
-    }
-}
+<h3>The Four Frameworks</h3>
 
-/* Print styles */
-@media print{
-    .a11y-bar, .site-nav{ display:none; }
-    body{ background:#fff; color:#000; }
-    .concept-card{ box-shadow:none; border:1px solid #ccc; }
-}
+<ul>
+<li><strong>V</strong> — Vigilance over how you capture and organize knowledge</li>
+<li><strong>I</strong> — Interdependence between ideas, not isolation</li>
+<li><strong>T</strong> — Tenacity in returning to and refining your notes</li>
+<li><strong>A</strong> — Application of every concept to a real scenario</li>
+<li><strong>L</strong> — Loyalty to your own understanding before the grade</li>
+</ul>
 
-</style>
-</head>
+</section>
 
-<body>
+<h2 class="section-heading" id="frameworks-heading">Frameworks</h2>
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<p class="section-intro">
+Each framework follows the same structure: <em>Topic → Definition → Rule → Example</em>.
+</p>
 
-<!-- ===== Accessibility Toolbar ===== -->
-<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+<section class="grid" aria-labelledby="frameworks-heading">
 
-    <div class="a11y-group" role="group" aria-label="Text size controls">
-        <span class="a11y-label" id="font-label">Text Size</span>
-
-        <button type="button"
-                class="a11y-btn"
-                id="font-decrease"
-                aria-label="Decrease text size">A−</button>
-
-        <span id="font-level-display"
-              aria-live="polite"
-              aria-describedby="font-label">100%</span>
-
-        <button type="button"
-                class="a11y-btn"
-                id="font-increase"
-                aria-label="Increase text size">A+</button>
-
-        <button type="button"
-                class="a11y-btn"
-                id="font-reset"
-                aria-label="Reset text size to 100 percent">Reset</button>
-    </div>
-
-    <div class="a11y-group">
-        <button type="button"
-                class="a11y-btn"
-                id="theme-toggle"
-                aria-pressed="false"
-                aria-label="Toggle dark mode">🌙 Dark Mode</button>
-    </div>
-
+<div class="card">
+<h3>Interdependent</h3>
+<p>
+Mutually dependent systems held together by four pillars. The <strong>LOVE</strong> framework: Loyalty, Observation, Vigilance, Enlighten.
+</p>
+<a href="interdependent.html">Open<span class="sr-only"> Interdependent</span></a>
 </div>
 
-<!-- ==== Top Nav (Injected via nav.js) ==== -->
-<div id="site-nav" class="site-nav" aria-label="Primary"></div>
-<script src="nav.js"></script>
-
-<header class="hero">
-
-<h1>Core Values &amp; Concepts</h1>
-
+<div class="card">
+<h3>Independent</h3>
 <p>
-V.I.T.A.L. Frameworks: Interdependent, Independent, and Hardship
+Self-governance and acting without external control. The <strong>GRIP</strong> framework: Guide, Rage, Into, Power.
 </p>
+<a href="independent.html">Open<span class="sr-only"> Independent</span></a>
+</div>
 
-</header>
+<div class="card">
+<h3>Hardship</h3>
+<p>
+Enduring privation or suffering, and supporting others through it. The <strong>LEAPS</strong> technique: Listen, Empathize, Ask Questions, Paraphrase, Summarize.
+</p>
+<a href="hardship.html">Open<span class="sr-only"> Hardship</span></a>
+</div>
 
-<main class="container" id="main-content">
+<div class="card">
+<h3>Gabe's Note-Taking</h3>
+<p>
+Life as a polynomial — many variables, various outcomes, one result. The <strong>GABE</strong> method: Get, Annotate, Build, Echo.
+</p>
+<a href="gabe-note-taking.html">Open<span class="sr-only"> Gabe's Note-Taking</span></a>
+</div>
 
-<!-- 1. Interdependent -->
-<section class="concept-card" aria-labelledby="interdependent-heading">
-    <h2 id="interdependent-heading">Interdependent</h2>
-    
-    <h3>Definition</h3>
-    <p>
-        Dependent upon one another; mutually dependent.
-    </p>
-    <a href="https://www.merriam-webster.com/dictionary/interdependent" target="_blank" class="source-link">
-        Origin: Merriam-Webster
-    </a>
-
-    <h3>Rule: The LOVE Framework</h3>
-    <p>To sustain an interdependent relationship, apply these four principles:</p>
-    <ul class="acronym-list">
-        <li>
-            <span class="acronym-letter">L</span>
-            <span class="acronym-def"><strong>Loyalty</strong> – Commitment to the mutual bond and shared success.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">O</span>
-            <span class="acronym-def"><strong>Observation</strong> – Attunement to the partner’s needs and changes in the environment.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">V</span>
-            <span class="acronym-def"><strong>Vigilance</strong> – Protecting the relationship from external threats and complacency.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">E</span>
-            <span class="acronym-def"><strong>Enlighten</strong> – Sharing knowledge, insights, and growth with one another.</span>
-        </li>
-    </ul>
-
-    <h3>Example</h3>
-    <p>
-        In a <strong>team project</strong>, each member relies on the others for success. If one person fails, the whole group suffers. By applying <strong>Loyalty</strong> to the team goal, <strong>Observing</strong> when a teammate is struggling, <strong>Vigilance</strong> against outside distractions, and <strong>Enlightening</strong> each other with new insights, the team maintains its interdependent strength.
-    </p>
 </section>
 
-<!-- 2. Independent -->
-<section class="concept-card" aria-labelledby="independent-heading">
-    <h2 id="independent-heading">Independent</h2>
-    
-    <h3>Definition</h3>
-    <p>
-        Not dependent: such as; not subject to control by others : self-governing; not affiliated with a larger controlling unit.
-    </p>
-    <a href="https://www.merriam-webster.com/dictionary/independent" target="_blank" class="source-link">
-        Origin: Merriam-Webster
-    </a>
+<h2 class="section-heading" id="reading-heading">Source Definitions</h2>
 
-    <h3>Rule: The GRIP Framework</h3>
-    <p>Independence is the power to guide oneself into a state of self-determination:</p>
-    <ul class="acronym-list">
-        <li>
-            <span class="acronym-letter">G</span>
-            <span class="acronym-def"><strong>Guide</strong> – Direct your own path and decisions without external reliance.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">R</span>
-            <span class="acronym-def"><strong>Rage</strong> – Channel the energy against constraints or lack of autonomy.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">I</span>
-            <span class="acronym-def"><strong>Into</strong> – Push forward into new territories of self-reliance.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">P</span>
-            <span class="acronym-def"><strong>Power</strong> – Establish your own authority and capacity to act.</span>
-        </li>
-    </ul>
-
-    <h3>Example</h3>
-    <p>
-        A <strong>startup founder</strong> who refuses venture capital to maintain independence. They <strong>Guide</strong> their own vision, channel their <strong>Rage</strong> against corporate constraints, push <strong>Into</strong> new markets, and establish their own <strong>Power</strong> structure.
-    </p>
-</section>
-
-<!-- 3. Hardship -->
-<section class="concept-card" aria-labelledby="hardship-heading">
-    <h2 id="hardship-heading">Hardship</h2>
-    
-    <h3>Definition</h3>
-    <p>
-        Privation, suffering; something that causes or entails suffering or privation.
-    </p>
-    <a href="https://www.merriam-webster.com/dictionary/hardship" target="_blank" class="source-link">
-        Origin: Merriam-Webster
-    </a>
-
-    <h3>Rule: The LEAPS Technique</h3>
-    <p>When facing or helping others through <strong>Hardship</strong>, use this framework for effective communication and support:</p>
-    <ul class="acronym-list">
-        <li>
-            <span class="acronym-letter">L</span>
-            <span class="acronym-def"><strong>Listen</strong> – Give full attention to the person suffering.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">E</span>
-            <span class="acronym-def"><strong>Empathize</strong> – Validate their feelings and experience.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">A</span>
-            <span class="acronym-def"><strong>Ask Questions</strong> – Clarify the root causes and needs.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">P</span>
-            <span class="acronym-def"><strong>Paraphrase</strong> – Reflect back what you heard to ensure understanding.</span>
-        </li>
-        <li>
-            <span class="acronym-letter">S</span>
-            <span class="acronym-def"><strong>Summarize</strong> – Outline next steps or key takeaways to alleviate suffering.</span>
-        </li>
-    </ul>
-
-    <h3>Example</h3>
-    <p>
-        A counselor helping a client through financial <strong>Hardship</strong>. They <strong>Listen</strong> to the client’s story, <strong>Empathize</strong> with the stress, <strong>Ask Questions</strong> to clarify the root causes, <strong>Paraphrase</strong> to ensure understanding, and <strong>Summarize</strong> the next steps to alleviate suffering.
-    </p>
-    <p>
-        <em>See also: <a href="https://youtu.be/6ESnpSpgbdg?si=qPqtxlieUOuXdA5J" target="_blank">Video Reference on Empathy</a></em>
-    </p>
-</section>
+<ul>
+<li><strong>Interdependent</strong> — dependent upon one another; mutually dependent (<a href="https://www.merriam-webster.com/dictionary/interdependent" target="_blank" rel="noopener">Merriam-Webster</a>)</li>
+<li><strong>Independent</strong> — not dependent; not subject to control by others; self-governing (<a href="https://www.merriam-webster.com/dictionary/independent" target="_blank" rel="noopener">Merriam-Webster</a>)</li>
+<li><strong>Hardship</strong> — privation, suffering; something that causes or entails suffering (<a href="https://www.merriam-webster.com/dictionary/hardship" target="_blank" rel="noopener">Merriam-Webster</a>)</li>
+<li><strong>Active Listening &amp; Empathy</strong> — <a href="https://youtu.be/6ESnpSpgbdg?si=qPqtxlieUOuXdA5J" target="_blank" rel="noopener">video reference for LEAPS</a></li>
+</ul>
 
 </main>
-
-<footer>
-
-<h3>Chapter 5 Mastery Center</h3>
-
-<p>
-Build confidence one concept at a time.
-</p>
-
-<p>
-Next Milestone: Complete the Confidence Check with at least 80% mastery.
-</p>
-
-<p class="copyright">
-&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
-</p>
-
-</footer>
 
 <script>
 (function () {
@@ -525,12 +369,12 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
     if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
     }
-    
+
     // ---------- Text Size Controls ----------
     var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
     var MIN_INDEX = 0;
     var MAX_INDEX = LEVELS.length - 1;
-    var DEFAULT_INDEX = 2;
+    var DEFAULT_INDEX = 2;                       // 100%
 
     var STORE_KEY_SIZE  = 'ch5-font-scale-index';
     var STORE_KEY_THEME = 'ch5-theme';
@@ -572,7 +416,7 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
 
         try {
             window.localStorage.setItem(STORE_KEY_SIZE, String(index));
-        } catch (e) {}
+        } catch (e) { /* storage unavailable — degrade silently */ }
 
         if (announce) {
             display.textContent = Math.round(scale * 100) + '% text size';
@@ -597,6 +441,7 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
         applyScale(currentIndex, true);
     });
 
+    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
     document.addEventListener('keydown', function (evt) {
         if (!(evt.ctrlKey || evt.metaKey)) { return; }
 
@@ -622,7 +467,7 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
         try {
             var stored = window.localStorage.getItem(STORE_KEY_THEME);
             if (stored === 'dark' || stored === 'light') { return stored; }
-        } catch (e) {}
+        } catch (e) { /* ignore */ }
 
         if (window.matchMedia &&
             window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -647,7 +492,7 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
         if (persist) {
             try {
                 window.localStorage.setItem(STORE_KEY_THEME, theme);
-            } catch (e) {}
+            } catch (e) { /* ignore */ }
         }
     }
 
@@ -659,6 +504,7 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
         applyTheme(currentTheme, true);
     });
 
+    // Follow OS changes only when the user hasn't chosen manually
     if (window.matchMedia) {
         var mq = window.matchMedia('(prefers-color-scheme: dark)');
         var onChange = function (e) {
@@ -674,12 +520,30 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
         if (mq.addEventListener) {
             mq.addEventListener('change', onChange);
         } else if (mq.addListener) {
-            mq.addListener(onChange);
+            mq.addListener(onChange);   // older Safari
         }
     }
 
 })();
 </script>
+
+<footer>
+
+<h3>V.I.T.A.L. Frameworks</h3>
+
+<p>
+Every variable matters. Every term counts toward the outcome.
+</p>
+
+<p>
+Next Milestone: Apply GABE to one lecture this week.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> V.I.T.A.L. Frameworks. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
