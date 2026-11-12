@@ -293,10 +293,122 @@ body{
 }
 
 .card a:focus-visible{
-    outline:3px solidvarious variables with different degrees intersecting to create one outcome.
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+/* ===== Section Headings ===== */
+.section-heading{
+    font-size:calc(1.6rem * var(--font-scale));
+    color:var(--primary);
+    margin:50px 0 20px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--border);
+}
+
+.section-intro{
+    color:var(--text-muted);
+    font-size:calc(1rem * var(--font-scale));
+    margin:-10px 0 25px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+ul{
+    padding-left:20px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .card:hover{
+        transform:none;
+    }
+}
+
+/* Print styles */
+@media print{
+    .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .card{ box-shadow:none; border:1px solid #ccc; }
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button"
+                class="a11y-btn"
+                id="font-decrease"
+                aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display"
+              aria-live="polite"
+              aria-describedby="font-label">100%</span>
+
+        <button type="button"
+                class="a11y-btn"
+                id="font-increase"
+                aria-label="Increase text size">A+</button>
+
+        <button type="button"
+                class="a11y-btn"
+                id="font-reset"
+                aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button"
+                class="a11y-btn"
+                id="theme-toggle"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ==== Top === -->
+<div id="site-nav" class="site-nav" aria-label="Primary"></div>
+<script src="nav.js"></script>
+
+<header class="hero">
+
+<h1>V.I.T.A.L. Frameworks</h1>
+
+<p>
+Interdependence • Independence • Hardship • GABE Note-Taking
 </p>
 
-<h3>The Four Frameworks</h3>
+</header>
+
+<main class="container" id="main-content">
+
+<section class="progress-box" aria-labelledby="goal-heading">
+
+<h2 id="goal-heading">The Big Idea</h2>
+
+<p>
+Life behaves like a polynomial. Many variables, each with its own degree of influence, intersect to produce a single outcome. These frameworks give you a repeatable way to name those variables, write them down, and read the result.
+</p>
+
+<h3>The Five Marks</h3>
 
 <ul>
 <li><strong>V</strong> — Vigilance over how you capture and organize knowledge</li>
@@ -376,8 +488,8 @@ Life as a polynomial — many variables, various outcomes, one result. The <stro
     var MAX_INDEX = LEVELS.length - 1;
     var DEFAULT_INDEX = 2;                       // 100%
 
-    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
-    var STORE_KEY_THEME = 'ch5-theme';
+    var STORE_KEY_SIZE  = 'vital-font-scale-index';
+    var STORE_KEY_THEME = 'vital-theme';
 
     var btnIncrease = document.getElementById('font-increase');
     var btnDecrease = document.getElementById('font-decrease');
@@ -393,157 +505,4 @@ Life as a polynomial — many variables, various outcomes, one result. The <stro
         try {
             var raw = window.localStorage.getItem(STORE_KEY_SIZE);
             if (raw === null) { return DEFAULT_INDEX; }
-            var n = parseInt(raw, 10);
-            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
-        } catch (e) {
-            return DEFAULT_INDEX;
-        }
-    }
-
-    function applyScale(index, announce) {
-        index = clamp(index, MIN_INDEX, MAX_INDEX);
-        var scale = LEVELS[index];
-
-        root.style.setProperty('--font-scale', String(scale));
-        document.body.style.fontSize = (scale * 100) + '%';
-
-        display.textContent = Math.round(scale * 100) + '%';
-
-        btnDecrease.disabled = (index === MIN_INDEX);
-        btnIncrease.disabled = (index === MAX_INDEX);
-        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
-        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
-
-        try {
-            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
-        } catch (e) { /* storage unavailable — degrade silently */ }
-
-        if (announce) {
-            display.textContent = Math.round(scale * 100) + '% text size';
-        }
-    }
-
-    var currentIndex = getStoredIndex();
-    applyScale(currentIndex, false);
-
-    btnIncrease.addEventListener('click', function () {
-        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
-        applyScale(currentIndex, true);
-    });
-
-    btnDecrease.addEventListener('click', function () {
-        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
-        applyScale(currentIndex, true);
-    });
-
-    btnReset.addEventListener('click', function () {
-        currentIndex = DEFAULT_INDEX;
-        applyScale(currentIndex, true);
-    });
-
-    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
-    document.addEventListener('keydown', function (evt) {
-        if (!(evt.ctrlKey || evt.metaKey)) { return; }
-
-        if (evt.key === '+' || evt.key === '=') {
-            evt.preventDefault();
-            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
-            applyScale(currentIndex, true);
-        } else if (evt.key === '-' || evt.key === '_') {
-            evt.preventDefault();
-            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
-            applyScale(currentIndex, true);
-        } else if (evt.key === '0') {
-            evt.preventDefault();
-            currentIndex = DEFAULT_INDEX;
-            applyScale(currentIndex, true);
-        }
-    });
-
-    // ---------- Dark Mode Toggle ----------
-    var themeToggle = document.getElementById('theme-toggle');
-
-    function getPreferredTheme() {
-        try {
-            var stored = window.localStorage.getItem(STORE_KEY_THEME);
-            if (stored === 'dark' || stored === 'light') { return stored; }
-        } catch (e) { /* ignore */ }
-
-        if (window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-        }
-        return 'light';
-    }
-
-    function applyTheme(theme, persist) {
-        if (theme === 'dark') {
-            root.setAttribute('data-theme', 'dark');
-            themeToggle.setAttribute('aria-pressed', 'true');
-            themeToggle.textContent = '☀️ Light Mode';
-            themeToggle.setAttribute('aria-label', 'Switch to light mode');
-        } else {
-            root.removeAttribute('data-theme');
-            themeToggle.setAttribute('aria-pressed', 'false');
-            themeToggle.textContent = '🌙 Dark Mode';
-            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-        }
-
-        if (persist) {
-            try {
-                window.localStorage.setItem(STORE_KEY_THEME, theme);
-            } catch (e) { /* ignore */ }
-        }
-    }
-
-    var currentTheme = getPreferredTheme();
-    applyTheme(currentTheme, false);
-
-    themeToggle.addEventListener('click', function () {
-        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-        applyTheme(currentTheme, true);
-    });
-
-    // Follow OS changes only when the user hasn't chosen manually
-    if (window.matchMedia) {
-        var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        var onChange = function (e) {
-            var stored = null;
-            try { stored = window.localStorage.getItem(STORE_KEY_THEME); }
-            catch (err) { stored = null; }
-
-            if (stored !== 'dark' && stored !== 'light') {
-                currentTheme = e.matches ? 'dark' : 'light';
-                applyTheme(currentTheme, false);
-            }
-        };
-        if (mq.addEventListener) {
-            mq.addEventListener('change', onChange);
-        } else if (mq.addListener) {
-            mq.addListener(onChange);   // older Safari
-        }
-    }
-
-})();
-</script>
-
-<footer>
-
-<h3>V.I.T.A.L. Frameworks</h3>
-
-<p>
-Every variable matters. Every term counts toward the outcome.
-</p>
-
-<p>
-Next Milestone: Apply GABE to one lecture this week.
-</p>
-
-<p class="copyright">
-&copy; <span id="copyright-year">2026</span> V.I.T.A.L. Frameworks. All rights reserved.
-</p>
-
-</footer>
-
-</body>
-</html>
+           
